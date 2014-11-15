@@ -1,28 +1,193 @@
 <!DOCTYPE html>
 <html>
-  <head>
-	<meta charset="UTF-8">
-    <title><%= title %></title>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular-route.min.js"></script>
-	<script src="./server/controllers/appController.js"></script>
-	<script src="./server/controllers/elementsController.js"></script>
-	<script src="./server/factories/elementsFactory.js"></script>
-    <link rel='stylesheet' href='/css/style.css' />
-  </head>
-  <body ng-app="elementsApp">
-	<div ng-view></div>
-	<div class='clear'></div>
-	<div class="container" ng-controller='elementController'>
-		<div class='drop_12'></div>
-		<div ng-model="showme">
-		<div ng-repeat="element in elements | orderBy:'number' | limitTo:35">
-			<div class="click_space">
-				<a href="#/{{element.number}}">{{element.small}}</a>
+  	<head>
+		<meta charset="UTF-8">
+		<title>My Chemical Friendship</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular-route.min.js"></script>
+		<script src="./server/controllers/appController.js"></script>
+		<script src="./server/controllers/elementsController.js"></script>
+		<script src="./server/factories/elementsFactory.js"></script>
+		<script type="text/javascript">
+				function typeout(id, msg, n) {
+					if (document.getElementById(id).childNodes.length == 0) {
+						document.getElementById(id).appendChild(document.createTextNode(""));
+					}
+					if (n >= msg.length)
+						return;
+					document.getElementById(id).firstChild.data += msg.charAt(n);
+					setTimeout("typeout('" + id + "', '" + msg + "', " + (n + 1) + ")", 50);
+				}
+			</script>
+		<link rel='stylesheet' type='text/css' href='css/reset.css'>
+	    <link rel='stylesheet' href='/css/style.css' />
+  	</head>
+	<body style="padding:2px; margin:2px;" onload='typeout("typmsg", "Hello and welcome to my chemistry class! The atoms have been feeling very lonely lately. Let us find them some new friends. Click on an atom now.", 0)'>
+		<header class="teacherTalk">
+			<img src="img/teacherSprite.png" alt="Teacher" height="200" width="200">
+			<div id="typmsgPad">
+				<div id="typmsg"></div>
 			</div>
+		</header>
+		<div ng-app="elementsApp">
+			<div ng-view id="view"></div>
+			<div class='clear'></div>
 		</div>
-		<div class="clear"></div>
-	</div>
+			<table class='pTable' id='pTableOverride'>
+			<!-- Period 1 -->
+			<tr class='shell1'>
+				<td class='elem' id='e1'><a href="#/1">H</a></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class='elem' id='e2'><a href="#/2">He</a></td>
+			</tr>
+			<!-- Period 2 -->
+			<tr>
+				<td class='elem' id='e3'><a href="#/3">Li</a></td>
+				<td class='elem' id='e4'><a href="#/4">Be</a></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class='elem' id='e5'><a href="#/5">B</a></td>
+				<td class='elem' id='e6'><a href="#/6">C</a></td>
+				<td class='elem' id='e7'><a href="#/7">N</a></td>
+				<td class='elem' id='e8'><a href="#/8">O</a></td>
+				<td class='elem' id='e9'><a href="#/9">F</a></td>
+				<td class='elem' id='e10'><a href="#/10">Ne</a></td>
+			</tr>
+			<!-- Period 3 -->
+			<tr>
+				<td class='elem' id='e11'><a href="#/11">Na</a></td>
+				<td class='elem' id='e12'><a href="#/12">Mg</a></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class='elem' id='e13'><a href="#/13">Al</a></td>
+				<td class='elem' id='e14'><a href="#/14">Si</a></td>
+				<td class='elem' id='e15'><a href="#/15">P</a></td>
+				<td class='elem' id='e16'><a href="#/16">S</a></td>
+				<td class='elem' id='e17'><a href="#/17">Cl</a></td>
+				<td class='elem' id='e18'><a href="#/18">Ar</a></td>
+			</tr>
+			<!-- Period 4 -->
+			<tr>
+				<td class='elem' id='e19'><a href="#/19">K</a></td>
+				<td class='elem' id='e20'><a href="#/20">Ca</a></td>
+				<td class='elem tm' id='e21'><a href="#/21">Sc</a></td>
+				<td class='elem tm' id='e22'><a href="#/22">Ti</a></td>
+				<td class='elem tm' id='e23' ><a href="#/23">V</a></td>
+				<td class='elem tm' id='e24' ><a href="#/24">Cr</a></td>
+				<td class='elem tm' id='e25' ><a href="#/25">Mn</a></td>
+				<td class='elem tm' id='e26' ><a href="#/26">Fe</a></td>
+				<td class='elem tm' id='e27' ><a href="#/27">Co</a></td>
+				<td class='elem tm' id='e28' ><a href="#/28">Ni</a></td>
+				<td class='elem tm' id='e29' ><a href="#/29">Cu</a></td>
+				<td class='elem tm' id='e30' ><a href="#/29">Zn</a></td>
+				<td class='elem' id='e31'><a href="#/31">Ga</a></td>
+				<td class='elem' id='e32'><a href="#/32">Ge</a></td>
+				<td class='elem' id='e33'><a href="#/33">As</a></td>
+				<td class='elem' id='e34'><a href="#/34">Se</a></td>
+				<td class='elem' id='e35'><a href="#/35">Br</a></td>
+				<td class='elem' id='e36'>Kr</a></td>
+			</tr>
+			<tr>
+				<td class='elem' id='e37'>Rb</td>
+				<td class='elem' id='e38'>Sr</td>
+				<td class='elem tm' id='e39' >Y</td>
+				<td class='elem tm' id='e40' >Zr</td>
+				<td class='elem tm' id='e41' >Nb</td>
+				<td class='elem tm' id='e42' >Mo</td>
+				<td class='elem tm' id='e43' >Tc</td>
+				<td class='elem tm' id='e44' >Ru</td>
+				<td class='elem tm' id='e45' >Rh</td>
+				<td class='elem tm' id='e46' >Pd</td>
+				<td class='elem tm' id='e47' >Ag</td>
+				<td class='elem tm' id='e48' >Cd</td>
+				<td class='elem' id='e49'>In</td>
+				<td class='elem' id='e50'>Sn</td>
+				<td class='elem' id='e51'>Sb</td>
+				<td class='elem' id='e52'>Te</td>
+				<td class='elem' id='e53'>I</td>
+				<td class='elem' id='e54'>Xe</td>
+			</tr>
+				<td class='elem' id='e55'>Cs</td>
+				<td class='elem' id='e56'>Ba</td>
+				<td class='elem tm' id='e57' >La</td>
+				<td class='elem tm' id='e72' >Hf</td>
+				<td class='elem tm' id='e73' >Ta</td>
+				<td class='elem tm' id='e74' >W</td>
+				<td class='elem tm' id='e75' >Re</td>
+				<td class='elem tm' id='e76' >Os</td>
+				<td class='elem tm' id='e77' >Ir</td>
+				<td class='elem tm' id='e78' >Pt</td>
+				<td class='elem tm' id='e79' >Au</td>
+				<td class='elem tm' id='e80' >Hg</td>
+				<td class='elem tm' id='e81' >Tl</td>
+				<td class='elem tm' id='e82' >Pb</td>
+				<td class='elem tm' id='e83' >Bi</td>
+				<td class='elem tm' id='e84' >Po</td>
+				<td class='elem tm' id='e85' >At</td>
+				<td class='elem tm' id='e86' >Rn</td>
+			<tr>
+				<td class='elem am' id='e87' class='am'>Fr</td>
+				<td class='elem em' id='e88' class='em'>Ra</td>
+				<td class='elem tm' id='e89' >Ac</td>
+				<td class='elem tm' id='e104' >Rf</td>
+				<td class='elem tm' id='e105' >Db</td>
+				<td class='elem tm' id='e106' >Sg</td>
+				<td class='elem tm' id='e107' >Bh</td>
+				<td class='elem tm' id='e108' >Hs</td>
+				<td class='elem tm' id='e109' >Mt</td>
+			</tr>
+		</table>
   </body>
 </html>
+
+
+
+ <!DOCTYPE HTML>
+<html>
+<head>
+</head>
+
+
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
+
+
+
+
+
+
