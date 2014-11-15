@@ -1,3 +1,16 @@
-var elementsApp=angular.module('elementsApp', []);
-// var customerFactory = require('./factories/customerFactory.js');  //trying one approach
-// require('./factories/customerFactory.js'); //trying a different approach
+var elementsApp=angular.module('elementsApp', ['ngRoute'])
+	.config(function ($routeProvider) {
+		$routeProvider
+		.when('/:id',
+		{
+			templateUrl: './partials/detail.htm',
+			controller: 'elementController'
+		})
+		.when('/',
+		{
+			templateUrl: './partials/index.htm'
+		})
+		.otherwise({
+			redirectTo: '/'
+		});
+});

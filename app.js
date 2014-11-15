@@ -15,9 +15,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.set('server', path.join(__dirname, 'server'));
-// app.set('models', path.join(__dirname, 'server/models'));
-// app.set('controllers', path.join(__dirname, 'server/controllers'));
-// app.set('factories', path.join(__dirname, 'server/factories'));
 app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());

@@ -20,11 +20,12 @@ var Element = mongoose.model('Element');
 
 	//SHOW detail for element
 	router.get('/api/elements/:id', function(req,res){
-		Element.find({_id: req.params.id}, function(errors, result){
+		console.log('made it to routes');
+		Element.find({number: req.params.id}, function(errors, result){
 			console.log('Pulled element ', result);
 			res.json(result);
+			// res.render('partial/detail');
 		})
 	});
-
 
 module.exports = router;

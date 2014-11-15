@@ -5,48 +5,24 @@
     <title><%= title %></title>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular-route.min.js"></script>
 	<script src="./server/controllers/appController.js"></script>
 	<script src="./server/controllers/elementsController.js"></script>
 	<script src="./server/factories/elementsFactory.js"></script>
     <link rel='stylesheet' href='/css/style.css' />
   </head>
   <body ng-app="elementsApp">
-  	<p id='esempio'>thppt</p>
+	<div ng-view></div>
+	<div class='clear'></div>
 	<div class="container" ng-controller='elementController'>
 		<div class='drop_12'></div>
 		<div ng-model="showme">
-		<div ng-repeat="element in elements | orderBy:'number' | limitTo:35" class='clicky_space'>
-			<div class="click_space" id="{{element.number}}" ng-click="showme.target={{element.number}}">{{element.small}}</div>
+		<div ng-repeat="element in elements | orderBy:'number' | limitTo:35">
+			<div class="click_space">
+				<a href="#/{{element.number}}">{{element.small}}</a>
+			</div>
 		</div>
 		<div class="clear"></div>
-		<div ng-repeat="element in elements | orderBy:'number' | limitTo:35">
-			<div class='card' id="card_element.number" ng-hide="showme.target==={{element.number}}">
-				<!-- <div ng-repeat="element in elements" ng-hide="!elements.selected"> -->
-				<img src="img/{{element.number}}.png" />
-				<div class='description'>
-					<div class='descriptor'><p>Name</p></div>
-					<div class='detail'><p>{{element.name}}</p></div>
-					<div class='clear'></div>
-					<div class='descriptor'><p>Abbreviation</p></div>
-					<div class='detail'><p>{{element.small}}</p></div>
-					<div class='clear'></div>
-					<div class='descriptor'><p>Atomic Number</p></div>
-					<div class='detail'><p>{{element.number}}</p></div>
-					<div class='clear'></div>
-					<div class='descriptor'><p>Group</p></div>
-					<div class='detail'><p>{{element.group}}</p></div>
-					<div class='clear'></div>
-				</div><!--end of div description-->
-			</div><!--end of div card-->
-			<div class='clear'></div>
-		</div>
-		<div class='drop_12'></div>
 	</div>
-	<script>
-		$( document ).ready(function() {
-			$('#esempio').hide();
-			$('.card').hide();
-		});
-	</script>
   </body>
 </html>

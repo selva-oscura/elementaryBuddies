@@ -11,7 +11,8 @@ elementsApp.factory('elementFactory', function($http){
 			console.log('getElements error:', data);
 		});
 	}
-	factory.getElement=function(id){
+	factory.getElement=function(id, callback){
+		console.log(id);
 		$http.get('/api/elements/'+id).success(function(data){
 			element=data;
 			console.log('factory',element);
