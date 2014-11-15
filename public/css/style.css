@@ -1,0 +1,58 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.clear{
+	clear:both;
+}
+
+.click_space{
+	border:1px solid black;
+	width:10px;
+	height:10px;
+	float:left;
+	padding:8px;
+}
+
+.click_space:hover{
+	border:1px solid red;
+	background: silver;
+}
+
+.card{
+	border:1px solid gray;
+	width:800px;
+	height:300px;
+}
+
+.card img{
+	width:200px;
+	height:200px;
+	margin:50px;
+	float:left;
+	border:1px solid gray;
+}
+
+.card .description{
+	width:425px;
+	margin:50px 50px 50px 0px;
+	float:right;
+}
+
+.card .descriptor{
+	font-weight: bold;
+	text-align: right;
+	width:150px;
+	margin-right:20px;
+	float:left;
+}
+
+.card .detail{
+	width:200px;
+	float:left;
+}

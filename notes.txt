@@ -1,0 +1,5 @@
+Basic data regarding elements provided by
+	https://raw.githubusercontent.com/diniska/chemistry/master/PeriodicalTable/periodicTable.json
+imported into mongodb, using node-mongo-seeds
+	https://www.npmjs.org/package/node-mongo-seeds
+
